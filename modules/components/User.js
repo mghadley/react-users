@@ -1,7 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router'
 
-const User = ({ id, first_name, last_name, phone_number }) => (
+const User = ({ id, first_name, last_name, phone_number, deleteUser }) => (
 	<li>
 		<div className="card blue-grey">
 			<div className="card-content white-text">

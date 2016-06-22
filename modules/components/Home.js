@@ -23,18 +23,18 @@ class Home extends React.Component {
 		this.setState({ users: [ { ...user }, ...this.state.users ] })
 	}
 
-	deleteUser(user) {
+	deleteUser(id) {
 		event.PrevenDefault
 		$.ajax({
-			url: `${BASE_URL}/users/${id}`
-			type: 'DELETE',
+			url: `${BASE_URL}/users/${id}`,
+			type: 'DELETE'
 		}).done( () => {
 			let users = this.state.users
-			let index = users.findIndex( product => product.id === id)
+			let index = users.findIndex( user => user.id === id)
 			this.setState({
-				products: [
-					...products.slice(0, index),
-					...products.slice(index + 1, products.length)
+				users: [
+					...users.slice(0, index),
+					...users.slice(index + 1, users.length)
 				]
 			})
 		})
@@ -43,7 +43,7 @@ class Home extends React.Component {
 	render() {
 		return (
 			<div className = "row">
-				<Users users={this.state.users} deleteUser={this.deleteUser.bind(this)/>
+				<Users users={this.state.users} deleteUser={this.deleteUser.bind(this)}/>
 				<AddUser addUser={this.addUser.bind(this)}/>
 			</div>
 		)
